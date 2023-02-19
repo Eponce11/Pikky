@@ -8,6 +8,7 @@ import {
 
 
 import Profile from './pages/profile'
+import Post from './components/post'
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
         <Routes>
 
           <Route path='/' element={<Profile/>}/>
+          <Route path='/post' element={<Post/>}/>
 
         </Routes>
       </Router>
