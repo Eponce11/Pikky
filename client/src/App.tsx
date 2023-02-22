@@ -9,6 +9,7 @@ import {
 
 import Profile from './pages/profile'
 import Post from './components/post'
+import Follow from './components/follow'
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
 
           <Route path='/' element={<Profile/>}/>
           <Route path='/post' element={<Post/>}/>
+          <Route path='/followers' element={<Follow/>}/>
 
         </Routes>
       </Router>
