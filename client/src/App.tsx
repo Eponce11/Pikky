@@ -10,6 +10,7 @@ import {
 import Profile from './pages/profile'
 import Post from './components/post'
 import Follow from './components/follow'
+import Login from './pages/login'
 
 function App() {
 
@@ -19,9 +20,10 @@ function App() {
       <Router>
         <Routes>
 
-          <Route path='/' element={<Profile/>}/>
+          <Route path='/' element={<Login/>}/>
           <Route path='/post' element={<Post/>}/>
           <Route path='/followers' element={<Follow/>}/>
+          <Route path='/profile' element={<Profile/>}/>
 
         </Routes>
       </Router>
