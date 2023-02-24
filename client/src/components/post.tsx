@@ -1,15 +1,16 @@
 
+import { useNavigate } from "react-router-dom"
 
 
 const Post = () => {
 
-
+    const navigate = useNavigate();
 
     return (
         <div>
             <div className="flex items-center bg-[green] h-[50px] px-2">
                 <div className=" bg-[red] w-9 aspect-square rounded-full"/>
-                <p className="pl-2">Username</p>
+                <p className="pl-2" onClick={ () => { navigate("/user") }}>Username</p>
             </div>
             <div className="bg-[#19D16E] aspect-square"/>
             <div className="flex items-center justify-between bg-[blue] h-10">

@@ -1,22 +1,20 @@
-
+import { useNavigate } from "react-router-dom"
 
 
 
 const Login = () => {
 
+    const navigate = useNavigate();
 
     return (
         <div className="flex justify-center items-center bg-[green] h-screen w-screen">
-            <div className="bg-[blue] ">
-                <div>
-                    <label>Email</label>
-                    <input type="text" />
-                </div>
-                <div>
-                    <label>Password</label>
-                    <input type="text" />
-                </div>
-                
+            <div className="bg-[blue]">
+                <h1 className="text-[48px] text-center">Pikky</h1>
+                <p>Email:</p>
+                <input type="text" />
+                <p>Password:</p>
+                <input type="text" />
+                <button className="bg-[red]" onClick={ () => { navigate("/home") } } >Login</button>
             </div>
         </div>
     )
