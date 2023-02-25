@@ -1,10 +1,11 @@
 
 
 import Post from "../components/post"
+import Navbar from "../components/navbar"
 
 const Home = () => {
 
-
+    
 
 
     return (
@@ -12,6 +13,7 @@ const Home = () => {
             <Post/>
             <Post/>
             <Post/>
+            <Navbar/>
         </div>
     )
 }
