@@ -13,6 +13,7 @@ import Follow from './components/follow'
 import Login from './pages/login'
 import Home from './pages/home'
 import Search from './components/search'
+import EditProfile from './components/editProfile'
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
           <Route path='/user' element={<Profile/>}/>
           <Route path='/profile' element={<Profile/>}/>
           <Route path='/search' element={<Search/>}/>
+          <Route path='/edit' element={<EditProfile/>}/>
         </Routes>
       </Router>
     </div>
