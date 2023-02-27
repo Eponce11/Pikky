@@ -1,9 +1,11 @@
 
 from flask import Flask
 from flask_cors import CORS
-from flask_sqlalchemy import SQLAlchemy
+from flask_bcrypt import Bcrypt
 
-db = SQLAlchemy()
 app = Flask(__name__)
 
 CORS(app, origins=["http://localhost:3000"])
+
+bcrypt = Bcrypt(app)
+DATABASE = ""
