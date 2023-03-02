@@ -6,14 +6,16 @@ import {
   Route
 } from 'react-router-dom'
 
-
+import PrivateRoutes from './components/privateRoutes'
 import Profile from './pages/profile'
 import Post from './components/post'
-import Follow from './components/follow'
+import Followers from './components/followers'
+import Following from './components/following'
 import Login from './pages/login'
 import Home from './pages/home'
 import Search from './components/search'
 import EditProfile from './components/editProfile'
+import Register from './pages/register'
 
 function App() {
 
@@ -22,14 +24,21 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
+
+          <Route element={<PrivateRoutes/>}>
+            <Route path='/home' element={<Home/>}/>
+            <Route path='/post' element={<Post/>}/>
+            <Route path='/user/followers' element={<Followers/>}/>
+            <Route path='/user' element={<Profile/>}/>
+            <Route path='/search' element={<Search/>}/>
+            <Route path='/edit' element={<EditProfile/>}/>
+            <Route path='/user/following' element={<Following/>} />
+          </Route>
+
+          <Route path='/register' element={<Register/>} />
+
           <Route path='/' element={<Login/>}/>
-          <Route path='/home' element={<Home/>}/>
-          <Route path='/post' element={<Post/>}/>
-          <Route path='/followers' element={<Follow/>}/>
-          <Route path='/user' element={<Profile/>}/>
-          <Route path='/profile' element={<Profile/>}/>
-          <Route path='/search' element={<Search/>}/>
-          <Route path='/edit' element={<EditProfile/>}/>
+          
         </Routes>
       </Router>
     </div>
