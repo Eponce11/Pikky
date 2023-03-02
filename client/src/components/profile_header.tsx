@@ -1,10 +1,14 @@
 
+import { useNavigate } from "react-router-dom";
 
-
+import { useState } from "react"
 
 const ProfileHeader = () => {
 
+    const [isProfile] = useState(true);
+    const [isFollowing] = useState(false);
 
+    const navigate = useNavigate();
 
 
     return (
@@ -18,11 +22,11 @@ const ProfileHeader = () => {
                 </div>
                 <div className="h-12 col-span-3 pl-4">
                     <ul className="flex justify-center relative">
-                        <li className="flex flex-col items-center absolute left-0">
+                        <li className="flex flex-col items-center absolute left-0" onClick={ () => { navigate('/user/followers') }}>
                             <p>2021</p>
                             <p>Followers</p>
                         </li>
-                        <li className="flex flex-col items-center">
+                        <li className="flex flex-col items-center" onClick={ () => { navigate('/user/following') }}>
                             <p>201</p>
                             <p>Following</p>
                         </li>
@@ -36,7 +40,13 @@ const ProfileHeader = () => {
                     <p>Username</p>
                 </div>
                 <div className="flex items-center h-9 col-span-3 pl-4">
-                    <button className="bg-[yellow] h-8 w-full ">Follow</button>
+                    {
+                        isProfile ?
+                            <button className="bg-[yellow] h-8 w-full ">Edit Profile</button> :
+                            isFollowing ?
+                                <button className="bg-[yellow] h-8 w-full ">Unfollow</button> :
+                                <button className="bg-[yellow] h-8 w-full ">Follow</button>
+                    }
                 </div>
             </div>
         </div>

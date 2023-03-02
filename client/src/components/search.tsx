@@ -7,8 +7,8 @@ const Search = () => {
 
     return (
         <div className="h-screen">
-            <div className="flex items-center bg-[green] h-10">
-                <input type="text" className="w-full"/>
+            <div className="flex items-center bg-[green] h-10 px-2">
+                <input type="text" className="w-full pl-2" placeholder="search"/>
             </div>
             <ul className="px-2">
                 {
