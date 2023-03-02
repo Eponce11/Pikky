@@ -10,7 +10,7 @@ const Navbar = () => {
             <div className="bg-[yellow] h-10 aspect-square" onClick={ () => { navigate("/home") }}/>
             <div className="bg-[yellow] h-10 aspect-square" onClick={ () => { navigate("/search") }}/>
             <div className="bg-[yellow] h-10 aspect-square" />
-            <div className="bg-[yellow] h-10 aspect-square" onClick={ () => { navigate("/profile") }}/>
+            <div className="bg-[yellow] h-10 aspect-square" onClick={ () => { navigate("/user") }}/>
         </div>
     )
 }

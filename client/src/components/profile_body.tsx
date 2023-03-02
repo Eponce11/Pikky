@@ -1,8 +1,9 @@
 
+import { useNavigate } from "react-router-dom"
 
 const ProfileBody = () => {
 
-
+    const navigate = useNavigate();
     const medias = [0,0,0,0,0,0]
 
 
@@ -12,7 +13,7 @@ const ProfileBody = () => {
                 {
                     medias.map( (media, idx) => {
                         return (
-                            <div className="bg-[#19D16E] aspect-square" key={idx}></div>
+                            <div className="bg-[#19D16E] aspect-square" key={idx} onClick={ () => { navigate('/post') } }></div>
                         )
                     })
                 }
