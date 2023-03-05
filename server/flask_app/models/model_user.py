@@ -25,7 +25,7 @@ class User:
 
     @classmethod
     def getByEmail(cls, data):
-        query = "SELECT * FROM users WHERE email = %(email)s"
+        query = "SELECT * FROM users WHERE email = %(email)s;"
         result = connectToMySQL(DATABASE).query_db(query, data)
         if result:
             return cls(result[0])
@@ -33,12 +33,11 @@ class User:
     
     @classmethod
     def getByUsername(cls, data):
-        query = "SELECT * FROM users WHERE username = %(username)s"
+        query = "SELECT * FROM users WHERE username = %(username)s;"
         result = connectToMySQL(DATABASE).query_db(query, data)
         if result:
             return cls(result[0])
         return False
-
 
     @staticmethod
     def createUserValidator(formData):
@@ -71,3 +70,16 @@ class User:
             errors['confirmPassword'] = 'Must match password'
         
         return errors 
+
+    @staticmethod
+    def loginUserValidator(formData):
+
+        potentialUser = User.getByEmail({ 'email': formData['email'] })
+
+        if not potentialUser:
+            return "Invalid Credentials"
+
+        if not bcrypt.check_password_hash(potentialUser.password, formData['password']):
+            return "Invalid Credentials"
+        
+        return None
