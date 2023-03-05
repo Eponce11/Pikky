@@ -34,8 +34,24 @@ def createUser():
 
     return response
 
-@app.route('/api')
-def test():
-    return {
-        "Hello": "World"
-    }
+@app.route('/api/user/login', methods=['POST'])
+def login():
+    data = json.loads(request.data)
+
+    error = User.loginUserValidator(data)
+
+    if error:
+        response = app.response_class(
+            response = json.dumps(error),
+            status = 400,
+            mimetype = 'application/json'
+        )
+        return response
+    
+    response = app.response_class(
+        response = json.dumps({ 'Msg': 'Success' }),
+        status = 200,
+        mimetype = 'application/json'
+    )
+
+    return response
