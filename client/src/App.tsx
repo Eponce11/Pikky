@@ -35,9 +35,9 @@ function App() {
             <Route path='/user/following' element={<Following/>} />
           </Route>
 
-          <Route path='/register' element={<Register/>} />
-
           <Route path='/' element={<Login/>}/>
+
+          <Route path='/register' element={<Register/>} />
           
         </Routes>
       </Router>

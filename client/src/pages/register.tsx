@@ -46,14 +46,15 @@ const Register = () => {
 
     return (
         <div className="flex justify-center items-center h-screen">
-            <div className="bg-[red] p-10 aspect-square" />
-            <input type="text" name='username' value={username} onChange={onChange}/>
-            <input type="text" name='firstName' value={firstName} onChange={onChange}/>
-            <input type="text" name='lastName' value={lastName} onChange={onChange}/>
-            <input type="text" name='email' value={email} onChange={onChange}/>
-            <input type="text" name='password' value={password} onChange={onChange}/>
-            <input type="text" name='confirmPassword' value={confirmPassword} onChange={onChange}/>
-            <button>Register</button>
+            <div className="bg-[red] p-10 aspect-square" >
+                <input type="text" name='username' value={username} onChange={onChange}/>
+                <input type="text" name='firstName' value={firstName} onChange={onChange}/>
+                <input type="text" name='lastName' value={lastName} onChange={onChange}/>
+                <input type="text" name='email' value={email} onChange={onChange}/>
+                <input type="text" name='password' value={password} onChange={onChange}/>
+                <input type="text" name='confirmPassword' value={confirmPassword} onChange={onChange}/>
+                <button onClick={handleRegister}>Register</button>
+            </div>
         </div>
     )
 }
