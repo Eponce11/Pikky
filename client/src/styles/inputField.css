@@ -1,0 +1,65 @@
+
+
+
+@layer components {
+    * {
+        box-sizing: border-box;
+    }
+
+
+    .inputField {
+        position: relative;
+        width: 100%;
+        margin-top: 35px;
+        background-color: #EDEDED;
+        border-radius: 4px;
+    }
+
+    .inputField > input {
+        position: relative;
+        width: 100%;
+        padding: 20px 10px 10px;
+        background: transparent;
+        border: none;
+        outline: none;
+        color: #23242a;
+        font-size: 1em;
+        letter-spacing: 0.05em;
+        z-index: 10;
+    }
+
+    .inputField > span {
+        position: absolute;
+        left: 0;
+        padding: 15px 10px 10px;
+        font-size: 1em;
+        color: black;
+        pointer-events: none;
+        letter-spacing: 0.02em;
+        transition: 0.5s;
+    }
+
+    .inputField > input:valid ~ span,
+    .inputField > input:focus ~ span {
+        color: black;
+        transform: translateX(0px) translateY(-12px);
+        font-size: 0.75em;
+    }
+    
+    
+    input[type="submit"] {
+        border: none;
+        outline: none;
+        background: #6D4AFF;
+        padding: 11px 25px;
+        margin-top: 15px;
+        border-radius: 4px;
+        font-weight: 600;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    input[type="submit"]:active {
+        opacity: 0.8;
+    }
+}

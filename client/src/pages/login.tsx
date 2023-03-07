@@ -41,15 +41,26 @@ const Login = () => {
     }
 
     return (
-        <div className="flex justify-center items-center bg-[green] h-screen w-screen">
-            <div className="bg-[blue] h-80 w-96">
-                <h1 className="text-[48px] text-center">Pikky</h1>
-                <span>{ error }</span>
-                <p>Email:</p>
-                <input type="text" className="mb-4" name='email' value={email} onChange={onChange} />
-                <p>Password:</p>
-                <input type="text" name='password' value={password} onChange={onChange} />
-                <button className="bg-[red] w-full block" onClick={handleLogin} >Login</button>
+        <div className="flex justify-center items-center h-screen w-screen bg-[#F9F9F9]">
+            <div className="flex justify-center pt-5 pb-10 w-full max-w-[400px] border border-solid border-[#DBDBDB] drop-shadow-xl">
+                <div className="flex flex-col items-center relative w-full px-4">
+                    <h1 className="text-[48px] text-center">Pikky</h1>
+                    <span className="text-[red] absolute top-16">{ error }</span>
+                    <div className="mt-10 inputField">
+                        <input type="text" name='email' value={email} onChange={onChange} required/>
+                        <span>Email</span>
+                    </div>
+
+                    <div className="inputField">
+                        <input type="text" name='password' value={password} onChange={onChange} required/>
+                        <span>Password</span>
+                        <i></i>
+                    </div>
+                    <div className="w-full text-end mt-2">
+                        <a className="decoration-none" href="/register">SignUp</a>
+                    </div>
+                    <input type='submit' value="Login" className="text-[#F9F9F9]" onClick={handleLogin} />
+                </div>
             </div>
         </div>
     )
