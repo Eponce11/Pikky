@@ -41,25 +41,23 @@ const Login = () => {
     }
 
     return (
-        <div className="flex justify-center items-center h-screen w-screen bg-[#F9F9F9]">
-            <div className="flex justify-center pt-5 pb-10 w-full max-w-[400px] border border-solid border-[#DBDBDB] drop-shadow-xl">
+        <div className="flex justify-center items-center h-screen w-screen bg-primary-white">
+            <div className="flex justify-center pt-5 pb-10 w-full max-w-[400px] border border-solid border-border-grey drop-shadow-xl">
                 <div className="flex flex-col items-center relative w-full px-4">
                     <h1 className="text-[48px] text-center">Pikky</h1>
-                    <span className="text-[red] absolute top-16">{ error }</span>
+                    <span className="text-text-error absolute top-16">{ error }</span>
                     <div className="mt-10 inputField">
                         <input type="text" name='email' value={email} onChange={onChange} required/>
                         <span>Email</span>
                     </div>
-
                     <div className="inputField">
                         <input type="text" name='password' value={password} onChange={onChange} required/>
                         <span>Password</span>
-                        <i></i>
                     </div>
                     <div className="w-full text-end mt-2">
                         <a className="decoration-none" href="/register">SignUp</a>
                     </div>
-                    <input type='submit' value="Login" className="text-[#F9F9F9]" onClick={handleLogin} />
+                    <input type='submit' value="Login" className="primary-btn px-6 py-3 mt-4" onClick={handleLogin} />
                 </div>
             </div>
         </div>

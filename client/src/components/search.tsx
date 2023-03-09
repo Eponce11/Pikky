@@ -1,14 +1,20 @@
 
 import Navbar from "./navbar"
+import { useState } from "react"
 
 const Search = () => {
+
+    const [username, setUsername] = useState<string>();
 
     const temp = [0, 0, 0, 0]
 
     return (
         <div className="h-screen">
             <div className="flex items-center bg-[green] h-10 px-2">
-                <input type="text" className="w-full pl-2" placeholder="search"/>
+                    <div className="inputField">
+                        <input type="text" name='password' value={username} onChange={ (e) =>  setUsername(e.target.value)} required/>
+                        <span>Password</span>
+                    </div>
             </div>
             <ul className="px-2">
                 {
