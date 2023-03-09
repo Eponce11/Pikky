@@ -1,4 +1,7 @@
-@import './styles/inputField.css'
+@import './styles/inputField.css';
+@import './styles/primaryButton.css';
+@import './styles/secondaryButton.css'
+
 
 @tailwind base;
 @tailwind components;
