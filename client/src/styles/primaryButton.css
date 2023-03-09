@@ -1,0 +1,19 @@
+
+
+@layer components {
+    
+    .primary-btn {
+        border: none;
+        outline: none;
+        background: theme(colors.primary-purple);
+        border-radius: 4px;
+        font-weight: 600;
+        cursor: pointer;
+        width: 100%;
+        color: theme(colors.primary-white)
+    }
+
+    .primary-btn:active {
+        opacity: 0.8;
+    }
+}
