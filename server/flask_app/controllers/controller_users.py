@@ -55,3 +55,25 @@ def login():
     )
 
     return response
+
+@app.route('/api/user/getOne', methods=['POST'])
+def getOneUserByUsername():
+    data = json.loads(request.data)
+
+    user = User.getByUsername({ 'username': data['username'] })
+
+    if not user:
+        response = app.response_class(
+            response = json.dumps("User not found"),
+            status = 400,
+            mimetype = 'application/json'
+        )
+        return response
+
+    response = app.response_class(
+        response = json.dumps({ 'username': user['username'] }),
+        status = 400,
+        mimetype = 'application/json'
+    )
+
+    return response
