@@ -2,6 +2,7 @@
 
 import Post from "../components/post"
 import Navbar from "../components/navbar"
+import Header from "../components/header"
 
 const Home = () => {
 
@@ -10,6 +11,7 @@ const Home = () => {
 
     return (
         <div>
+            <Header/>
             <Post/>
             <Post/>
             <Post/>

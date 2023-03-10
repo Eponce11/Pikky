@@ -7,7 +7,7 @@ const Navbar = () => {
     const navigate = useNavigate();
 
     return (
-        <div className="flex justify-around items-center bg-secondary-purple w-full h-[40px] sticky bottom-0">
+        <div className="flex justify-around items-center bg-secondary-purple w-full h-[40px] sticky bottom-0 z-50">
             <div className="flex justify-between w-1/2">
                 <img src={ HomeIcon } alt="home" onClick={ () => { navigate("/home") }}/>
                 <img src={ SearchIcon } alt="search" onClick={ () => { navigate("/search") }}/>
