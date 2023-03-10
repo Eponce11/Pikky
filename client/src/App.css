@@ -5,10 +5,21 @@
   src: url("fonts/Karla-Regular.ttf")
 }
 
+@font-face {
+  font-family: "Righteous-Regular";
+  src: url("fonts/Righteous-Regular.ttf")
+}
+
 * {
   margin: 0;
   padding: 0;
   font-family: "Karla-Regular"
 }
+
+h1 {
+  font-family: "Righteous-Regular";
+  letter-spacing: 0.05em;
+}
+
 
 

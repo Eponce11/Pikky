@@ -13,7 +13,7 @@ import Followers from './components/followers'
 import Following from './components/following'
 import Login from './pages/login'
 import Home from './pages/home'
-import Search from './components/search'
+import Search from './pages/search'
 import EditProfile from './components/editProfile'
 import Register from './pages/register'
 

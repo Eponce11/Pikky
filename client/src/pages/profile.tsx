@@ -10,7 +10,7 @@ const Profile = () => {
 
 
     return (
-        <div className="flex flex-col">
+        <div className="flex flex-col h-screen">
             <ProfileHeader/>
             <ProfileBody/>
             <Navbar/>
