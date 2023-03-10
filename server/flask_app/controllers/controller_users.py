@@ -60,7 +60,7 @@ def login():
 def getOneUserByUsername():
     data = json.loads(request.data)
 
-    user = User.getByUsername({ 'username': data['username'] })
+    user = User.getByUsername(data)
 
     if not user:
         response = app.response_class(
@@ -71,8 +71,8 @@ def getOneUserByUsername():
         return response
 
     response = app.response_class(
-        response = json.dumps({ 'username': user['username'] }),
-        status = 400,
+        response = json.dumps({ 'username': user.username }),
+        status = 200,
         mimetype = 'application/json'
     )
 
