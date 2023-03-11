@@ -8,17 +8,19 @@ import {
 
 import PrivateRoutes from './components/privateRoutes'
 import Profile from './pages/profile'
-import Post from './components/post'
-import Followers from './components/followers'
+import ViewPost from './pages/viewPost'
 import Following from './components/following'
+import Followers from './components/followers'
 import Login from './pages/login'
 import Home from './pages/home'
 import Search from './pages/search'
 import EditProfile from './components/editProfile'
 import Register from './pages/register'
 
+
 function App() {
 
+  
 
   return (
     <div className="App">
@@ -27,7 +29,7 @@ function App() {
 
           <Route element={<PrivateRoutes/>}>
             <Route path='/home' element={<Home/>}/>
-            <Route path='/post' element={<Post/>}/>
+            <Route path='/post' element={<ViewPost/>}/>
             <Route path='/user/followers' element={<Followers/>}/>
             <Route path='/user' element={<Profile/>}/>
             <Route path='/search' element={<Search/>}/>

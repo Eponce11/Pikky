@@ -1,5 +1,6 @@
 
 import { useNavigate } from "react-router-dom"
+import BackIcon from "../static/icon-back.svg"
 
 
 
@@ -12,7 +13,7 @@ const Followers = () => {
     return (
         <div>
             <div className="flex items-center justify-center p-2 bg-gradient-to-r from-primary-purple to-secondary-purple relative mb-2">
-                <div className="bg-[yellow] h-[30px] aspect-square left-0 ml-2 absolute" onClick={ () => { navigate('/user') } } />
+                <img src={ BackIcon } alt="Back" className="left-0 ml-2 absolute" onClick={ () => { navigate('/user') } }/>
                 <h3 className="text-primary-white ml-3">Username Followers</h3>
             </div>
             <ul className="px-2">

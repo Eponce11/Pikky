@@ -1,36 +1,36 @@
 
-
 import { useNavigate } from "react-router-dom"
-
+import BackIcon from "../static/icon-back.svg"
 
 
 const Following = () => {
 
-    const navigate = useNavigate();
+    const navigate:any = useNavigate();
+
+    const users = [{following: false},{following: false},{following: false},{following: true},{following: false}];
 
     return (
         <div>
-            <div className="flex items-center bg-[green] p-2">
-                <div className="bg-[yellow] h-7 aspect-square" onClick={ () => { navigate('/user') } } />
-                <div className="bg-[blue] h-7 aspect-square ml-3"/>
-                <h2 className="ml-3">Username Followers</h2>
+            <div className="flex items-center justify-center p-2 bg-gradient-to-r from-primary-purple to-secondary-purple relative mb-2">
+                <img src={ BackIcon } alt="Back" className="left-0 ml-2 absolute" onClick={ () => { navigate('/user') } }/>
+                <h3 className="text-primary-white ml-3">Username Following</h3>
             </div>
             <ul className="px-2">
-                <li className="flex items-center py-2 relative">
-                    <div className="bg-[red] rounded-full h-10 aspect-square"/>
-                    <h4 className="ml-3">Username</h4>
-                    <button className="right-2 absolute">Unfollow</button>
-                </li>
-                <li className="flex items-center py-2 relative">
-                    <div className="bg-[red] rounded-full h-10 aspect-square"/>
-                    <h4 className="ml-3">Username</h4>
-                    <button className="right-2 absolute">Unfollow</button>
-                </li>
-                <li className="flex items-center py-2 relative">
-                    <div className="bg-[red] rounded-full h-10 aspect-square"/>
-                    <h4 className="ml-3">Username</h4>
-                    <button className="right-2 absolute">Unfollow</button>
-                </li>
+                {
+                    users.map( (user, idx) => {
+                        return (
+                            <li className="flex items-center py-1 relative">
+                                <div className="bg-[red] rounded-full h-10 aspect-square"/>
+                                <h4 className="ml-3">Username</h4>
+                                {
+                                    user.following ?
+                                        <button className="right-2 absolute secondary-btn w-1/3 h-3/5">Unfollow</button> :
+                                        <button className="right-2 absolute primary-btn w-1/3 h-3/5">Follow</button>
+                                }
+                            </li>
+                        )
+                    })
+                }
             </ul>
         </div>
         
