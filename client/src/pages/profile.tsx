@@ -1,10 +1,11 @@
 
+
 import ProfileHeader from "../components/profile_header"
 import ProfileBody from "../components/profile_body"
 import Navbar from "../components/navbar"
 
-const Profile = () => {
 
+const Profile = () => {
 
 
 
