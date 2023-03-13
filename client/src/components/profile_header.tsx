@@ -42,7 +42,7 @@ const ProfileHeader = () => {
                 <div className="flex items-center h-9 col-span-3 pl-4">
                     {
                         isProfile ?
-                            <button className="primary-btn h-8 px-6 py-1">Edit Profile</button> :
+                            <button className="primary-btn h-8 px-6 py-1" onClick={ () => { navigate('/edit') }}>Edit Profile</button> :
                             isFollowing ?
                                 <button className="secondary-btn h-8 w-full ">Unfollow</button> :
                                 <button className="secondary-btn h-8 px-6 py-1 ">Follow</button>

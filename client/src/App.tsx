@@ -14,7 +14,7 @@ import Followers from './components/followers'
 import Login from './pages/login'
 import Home from './pages/home'
 import Search from './pages/search'
-import EditProfile from './components/editProfile'
+import EditProfile from './pages/editProfile'
 import Register from './pages/register'
 
 
@@ -30,11 +30,12 @@ function App() {
           <Route element={<PrivateRoutes/>}>
             <Route path='/home' element={<Home/>}/>
             <Route path='/post' element={<ViewPost/>}/>
-            <Route path='/user/followers' element={<Followers/>}/>
             <Route path='/user' element={<Profile/>}/>
             <Route path='/search' element={<Search/>}/>
             <Route path='/edit' element={<EditProfile/>}/>
-            <Route path='/user/following' element={<Following/>} />
+            <Route path='/user/following' element={<Following/>}/>
+            <Route path='/user/followers' element={<Followers/>}/>
+            <Route path='/edit' element={<EditProfile/>}/>
           </Route>
 
           <Route path='/' element={<Login/>}/>
