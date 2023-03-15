@@ -3,7 +3,11 @@ import Post from "../components/post";
 import BackIcon from "../static/icon-back.svg"
 import { useNavigate } from "react-router-dom";
 
+
+
+
 const ViewPost = () => {
+
 
 
     const navigate = useNavigate();

@@ -16,10 +16,38 @@ def getAllUserPosts():
         status = 200,
         mimetype = 'application/json'
     )
+    return response
 
+@app.route('/api/post/create', methods=['POST'])
+def createPost():
+    data = json.loads(request.data)
 
+    # temporary 
+    data['user_id'] = 1
 
+    postId = Post.createPost(data)
+    response = app.response_class(
+        response = json.dumps(postId),
+        status = 200,
+        mimetype = 'application/json'
+    )
 
     return response
+
+
+@app.route('/api/post/getOne', methods=['POST'])
+def getOne():
+    data = json.loads(request.data)
+    post = Post.getOnePost(data)
+
+    response = app.response_class(
+        response = json.dumps(post),
+        status = 200,
+        mimetype = 'application/json'
+    )
+
+    return post
+
+
 
 

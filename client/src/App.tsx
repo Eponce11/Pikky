@@ -16,6 +16,7 @@ import Home from './pages/home'
 import Search from './pages/search'
 import EditProfile from './pages/editProfile'
 import Register from './pages/register'
+import AddPost from './pages/addPost'
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
             <Route path='/user/following' element={<Following/>}/>
             <Route path='/user/followers' element={<Followers/>}/>
             <Route path='/edit' element={<EditProfile/>}/>
+            <Route path='/newPost' element={<AddPost/>}/>
           </Route>
 
           <Route path='/' element={<Login/>}/>
