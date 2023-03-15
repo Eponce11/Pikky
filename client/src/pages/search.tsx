@@ -2,8 +2,7 @@
 import Navbar from "../components/navbar"
 import { useState } from "react"
 import SearchIconBlack from "../static/icon-search-black.svg"
-import axios from "axios"
-
+import { searchForUser } from "../functions/api"
 
 interface SearchedUser {
     username: string;
@@ -19,17 +18,14 @@ const Search = () => {
 
     const temp = [0, 0, 0, 0];
 
-    const handleSearch = (e:React.MouseEvent<HTMLElement>): void => {
+    const handleSearch = async (e:React.MouseEvent<HTMLElement>): Promise<void> => {
         e.preventDefault();
-        axios.post('http://127.0.0.1:5000/api/user/getOne', { username })
-            .then( (response) => {
-                console.log(response.data);
-                setSearchedUser(response.data);
-            })
-            .catch( (error) => {
-                console.log(error.response.data);
-                setError(error.response.data);
-            })
+        try {
+            const potentialUser: SearchedUser = await searchForUser(username)
+            setSearchedUser(potentialUser);
+        } catch (err:any) {
+            setError(err)
+        }
     }
 
     return (

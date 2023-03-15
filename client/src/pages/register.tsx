@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom"
 import React, { useState } from "react"
-import axios from "axios"
+import { register } from "../functions/api";
 
-interface RegisterData {
+export interface RegisterData {
     username: string;
     firstName: string;
     lastName: string;
@@ -10,7 +10,6 @@ interface RegisterData {
     password: string;
     confirmPassword: string
 }
-
 interface RegisterDataErrors {
     username?: string;
     firstName?: string;
@@ -45,18 +44,14 @@ const Register = () => {
         }))
     }
 
-    const handleRegister = (e:React.MouseEvent<HTMLElement>): void => {
+    const handleRegister = async (e:React.MouseEvent<HTMLElement>): Promise<void> => {
         e.preventDefault();
-        axios.post('http://127.0.0.1:5000/api/user/create', formData)
-            .then( (response) => {
-                console.log(response.data)
-                navigate('/home')
-
-            })
-            .catch( (error) => {
-                console.log(error.response.data)
-                setErrors(error.response.data)
-            })
+        try {
+            await register(formData)
+            navigate('/home')
+        } catch (err:any) {
+            setErrors(err)
+        }
     }
 
     return (

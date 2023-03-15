@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom"
 import React, { useState } from "react";
-import axios from "axios";
 
+import { login } from "../functions/api";
 
-interface LoginData {
+export interface LoginData {
     email: string;
     password: string
 }
@@ -28,16 +28,14 @@ const Login = () => {
         }))
     }
 
-    const handleLogin = (e:React.MouseEvent<HTMLElement>): void => {
+    const handleLogin = async (e:React.MouseEvent<HTMLElement>): Promise<void> => {
         e.preventDefault();
-        axios.post('http://127.0.0.1:5000/api/user/login', formData)
-            .then( (response) => {
-                console.log(response.data)
-                navigate('/home')
-            })
-            .catch( (error) => {
-                setError(error.response.data)
-            })
+        try {
+            await login(formData)
+            navigate('/home')
+        }catch (err: any) {
+            setError(err)
+        }
     }
 
     return (
