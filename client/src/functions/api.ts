@@ -2,6 +2,7 @@
 import axios from "axios"
 
 const URL:string = 'http://127.0.0.1:5000/api'
+axios.defaults.withCredentials = true;
 
 import { LoginData } from "../pages/login"
 export const login = (data: LoginData): Promise<any> => {
@@ -29,9 +30,11 @@ export const register = (data: RegisterData): Promise<any> => {
     })
 } 
 
+import { getOptions } from "./jwt-config"
 export const searchForUser = (data: string): Promise<any> => {
+    const options = getOptions()
     return new Promise( (resolve, reject) => {
-        axios.post(`${URL}/user/getOne`, { username: data })
+        axios.post(`${URL}/user/getOne`, { username: data }, options)
             .then( (response) => {
                 resolve(response.data)
             })

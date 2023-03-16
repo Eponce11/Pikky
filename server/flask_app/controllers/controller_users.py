@@ -1,8 +1,8 @@
 
-from flask import json, request
-from flask_app import app, bcrypt
+from flask import json, request, jsonify
+from flask_app import app, bcrypt, jwt
 from flask_app.models.model_user import User
-
+from flask_jwt_extended import create_access_token, get_jwt, get_jwt_identity, set_access_cookies, unset_jwt_cookies, jwt_required
 
 
 @app.route('/api/user/create', methods=['POST'])
@@ -48,15 +48,15 @@ def login():
         )
         return response
     
-    response = app.response_class(
-        response = json.dumps({ 'Msg': 'Success' }),
-        status = 200,
-        mimetype = 'application/json'
-    )
+    response = jsonify({ 'msg': 'success' })
+
+    accessToken = create_access_token(identity = data['email'])
+    set_access_cookies(response, accessToken)
 
     return response
 
 @app.route('/api/user/getOne', methods=['POST'])
+@jwt_required()
 def getOneUserByUsername():
     data = json.loads(request.data)
 
@@ -76,4 +76,10 @@ def getOneUserByUsername():
         mimetype = 'application/json'
     )
 
+    return response
+
+@app.route('/api/user/logout', methods=['POST'])
+def logout():
+    response = json.dumps({ "msg": "Logout Success" })
+    unset_jwt_cookies(response)
     return response

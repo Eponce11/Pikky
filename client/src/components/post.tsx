@@ -27,7 +27,6 @@ const Post = () => {
 
     const navigate = useNavigate();
 
-    // <div className="bg-[#19D16E] aspect-square"/>
 
     return (
         <div className="border-solid border-x-0 border-t-0 border-b-[1px] border-border-grey">

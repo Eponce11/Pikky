@@ -22,9 +22,9 @@ const Search = () => {
         e.preventDefault();
         try {
             const potentialUser: SearchedUser = await searchForUser(username)
-            setSearchedUser(potentialUser);
+            // setSearchedUser(potentialUser);
         } catch (err:any) {
-            setError(err)
+            // setError(err)
         }
     }
 
