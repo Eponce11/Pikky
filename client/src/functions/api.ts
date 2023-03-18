@@ -2,9 +2,12 @@
 import axios from "axios"
 
 const URL:string = 'http://127.0.0.1:5000/api'
-axios.defaults.withCredentials = true;
 
+import { RegisterData } from "../pages/register"
 import { LoginData } from "../pages/login"
+import { getOptions } from "./jwt-config"
+import { PostData } from "../pages/addPost"
+
 export const login = (data: LoginData): Promise<any> => {
     return new Promise( (resolve, reject) => {
         axios.post(`${URL}/user/login`, data)
@@ -17,7 +20,19 @@ export const login = (data: LoginData): Promise<any> => {
     })
 } 
 
-import { RegisterData } from "../pages/register"
+export const registerValidation = (data: RegisterData): Promise<any> => {
+    return new Promise( (resolve, reject) => {
+        axios.post(`${URL}/user/createValidation`, data)
+            .then( (response) => {
+                resolve(response.data)
+            })
+            .catch( (error) => {
+                reject(error.response.data)
+            })
+    })
+}
+
+
 export const register = (data: RegisterData): Promise<any> => {
     return new Promise( (resolve, reject) => {
         axios.post(`${URL}/user/create`, data)
@@ -30,7 +45,6 @@ export const register = (data: RegisterData): Promise<any> => {
     })
 } 
 
-import { getOptions } from "./jwt-config"
 export const searchForUser = (data: string): Promise<any> => {
     const options = getOptions()
     return new Promise( (resolve, reject) => {
@@ -57,7 +71,7 @@ export const getAllUserPosts = (data: number): Promise<any> => {
     })
 }
 
-import { PostData } from "../pages/addPost"
+
 export const createPost = (data: PostData): Promise<any> => {
     return new Promise( (resolve, reject) => {
         axios.post(`${URL}/post/create`, data)

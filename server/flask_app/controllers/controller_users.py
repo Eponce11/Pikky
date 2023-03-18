@@ -34,6 +34,30 @@ def createUser():
 
     return response
 
+
+
+@app.route('/api/user/createValidation', methods=['POST'])
+def createUserValidation():
+    data = json.loads(request.data)
+
+    errors = User.createUserValidator(data)
+
+    if not len(errors) == 0:
+        response = app.response_class(
+            response = json.dumps(errors),
+            status = 400,
+            mimetype = 'application/json'
+        )
+        return response
+
+    response = json.dumps({'Msg': 'Success'})
+
+    return response, 200
+
+
+
+
+
 @app.route('/api/user/login', methods=['POST'])
 def login():
     data = json.loads(request.data)
@@ -56,7 +80,6 @@ def login():
     return response
 
 @app.route('/api/user/getOne', methods=['POST'])
-@jwt_required()
 def getOneUserByUsername():
     data = json.loads(request.data)
 
