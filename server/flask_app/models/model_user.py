@@ -14,12 +14,13 @@ class User:
         self.lastName = data['last_name']
         self.email = data['email']
         self.password = data['password']
+        self.profilePicture = data['profile_picture']
         self.createdAt = data['created_at']
         self.updatedAt = data['updated_at']
 
     @classmethod
     def createUser(cls, data):
-        query = "INSERT INTO users (username, first_name, last_name, email, password) VALUES (%(username)s, %(firstName)s, %(lastName)s, %(email)s, %(password)s);"
+        query = "INSERT INTO users (username, first_name, last_name, email, password, profile_picture) VALUES (%(username)s, %(firstName)s, %(lastName)s, %(email)s, %(password)s, %(profilePicture)s);"
         user_id = connectToMySQL(DATABASE).query_db(query, data)
         return user_id
 

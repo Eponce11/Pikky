@@ -10,16 +10,6 @@ def createUser():
 
     data = json.loads(request.data)
 
-    errors = User.createUserValidator(data)
-
-    if not len(errors) == 0:
-        response = app.response_class(
-            response = json.dumps(errors),
-            status = 400,
-            mimetype = 'application/json'
-        )
-        return response
-
     hash_pw = bcrypt.generate_password_hash(data['password'])
 
     data['password'] = hash_pw

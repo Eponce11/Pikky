@@ -1,10 +1,11 @@
 
 
 
-import React, { SetStateAction, useState } from "react";
+import React, { SetStateAction } from "react";
 import { useNavigate } from "react-router-dom";
 import { register } from "../functions/api";
 import { convertFileToBase64 } from "../functions/file-conversion";
+import DefaultProfilePicture from "../static/icon-profile-pic.svg"
 
 import { RegisterData } from "../pages/register";
 
@@ -16,7 +17,7 @@ interface RegisterProps {
 
 const RegisterProfileImgForm = (props: RegisterProps) => {
 
-    const { img } = props.formData
+    const { profilePicture } = props.formData
 
     const navigate = useNavigate();
 
@@ -26,7 +27,15 @@ const RegisterProfileImgForm = (props: RegisterProps) => {
         const base64 = await convertFileToBase64(file);
         props.setFormData( (prevState:RegisterData) => ({
             ...prevState,
-            img: base64
+            profilePicture: base64
+        }))
+    }
+
+    const removeFile = (e:React.MouseEvent<HTMLElement>): void => {
+        e.preventDefault()
+        props.setFormData( (prevState:RegisterData) => ({
+            ...prevState,
+            profilePicture: null
         }))
     }
 
@@ -53,12 +62,12 @@ const RegisterProfileImgForm = (props: RegisterProps) => {
                     onChange={handleFileUpload}
                 />
                 {
-                    img.length === 0 ?
-                        <div className="bg-[red] h-10 aspect-square" /> :
-                        <img src={img} alt="" />
-
+                    profilePicture ?
+                        <img src={profilePicture} alt="" className="w-10 h-10 rounded-full" /> :
+                        <img src={ DefaultProfilePicture } alt="" className="w-10 h-10 rounded-full"/>
                 }
                 <button onClick={ () => { props.setIsFormDataValid(false) } }>Back</button>
+                <button onClick={ removeFile }>Remove Picture</button>
                 <button onClick={handleRegister}>Upload</button>
             </div>
         </div>

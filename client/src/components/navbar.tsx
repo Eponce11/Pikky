@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom"
 import HomeIcon from '../static/icon-home.svg'
 import SearchIcon from '../static/icon-search.svg'
 
+
 const Navbar = () => {
 
     const navigate = useNavigate();

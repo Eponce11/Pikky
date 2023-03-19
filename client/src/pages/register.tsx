@@ -11,7 +11,7 @@ export interface RegisterData {
     email: string;
     password: string;
     confirmPassword: string
-    img: string;
+    profilePicture: string | null;
 }
 
 
@@ -26,7 +26,7 @@ const Register = () => {
         email: '',
         password: '',
         confirmPassword: '',
-        img: ''
+        profilePicture: null
     })
 
 
