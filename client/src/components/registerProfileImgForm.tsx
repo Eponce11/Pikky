@@ -7,6 +7,8 @@ import { register } from "../functions/api";
 import { convertFileToBase64 } from "../functions/file-conversion";
 import DefaultProfilePicture from "../static/icon-profile-pic.svg"
 
+
+
 import { RegisterData } from "../pages/register";
 
 interface RegisterProps {
