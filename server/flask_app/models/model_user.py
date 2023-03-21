@@ -78,9 +78,9 @@ class User:
         potentialUser = User.getByEmail({ 'email': formData['email'] })
 
         if not potentialUser:
-            return "Invalid Credentials"
+            return None
 
         if not bcrypt.check_password_hash(potentialUser.password, formData['password']):
-            return "Invalid Credentials"
+            return None
         
-        return None
+        return potentialUser

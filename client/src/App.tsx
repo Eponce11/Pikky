@@ -31,7 +31,7 @@ function App() {
           <Route element={<PrivateRoutes/>}>
             <Route path='/home' element={<Home/>}/>
             <Route path='/post' element={<ViewPost/>}/>
-            <Route path='/user' element={<Profile/>}/>
+            <Route path='/user/:username' element={<Profile/>}/>
             <Route path='/search' element={<Search/>}/>
             <Route path='/edit' element={<EditProfile/>}/>
             <Route path='/user/following' element={<Following/>}/>

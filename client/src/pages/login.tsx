@@ -1,7 +1,9 @@
 import { useNavigate } from "react-router-dom"
 import React, { useState } from "react";
-
+import { useAppDispatch } from "../app/hooks";
+import { setSignedInUser } from "../features/signedInUserSlice";
 import { login } from "../functions/api";
+
 
 export interface LoginData {
     email: string;
@@ -19,6 +21,7 @@ const Login = () => {
     const { email, password } = formData;
 
     const navigate = useNavigate();
+    const dispatch = useAppDispatch();
 
     const onChange = (e:React.ChangeEvent<HTMLInputElement>): void => {
         e.preventDefault();
@@ -31,7 +34,9 @@ const Login = () => {
     const handleLogin = async (e:React.MouseEvent<HTMLElement>): Promise<void> => {
         e.preventDefault();
         try {
-            await login(formData)
+            const response = await login(formData)
+            console.log(response)
+            dispatch(setSignedInUser(response))
             navigate('/home')
         }catch (err: any) {
             setError(err)

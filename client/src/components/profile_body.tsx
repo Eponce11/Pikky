@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { getAllUserPosts } from "../functions/api";
+import { useAppSelector } from "../app/hooks";
 
 export interface Post {
     id: number;
@@ -14,13 +15,14 @@ export interface Post {
 
 const ProfileBody = () => {
 
-    const navigate = useNavigate();
     const [posts, setPosts] = useState<Array<Post>>([]);
+    const navigate = useNavigate();
+    const userId = useAppSelector((state) => state.signedInUser.id)
     
     useEffect( () => {
         const fetchData = async (): Promise<void> => {
             try {
-                const allPosts = await getAllUserPosts(1)
+                const allPosts = await getAllUserPosts(userId)
                 setPosts(allPosts)
             } catch (err: any) {
                 console.log(err)

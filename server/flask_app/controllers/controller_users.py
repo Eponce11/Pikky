@@ -52,20 +52,24 @@ def createUserValidation():
 def login():
     data = json.loads(request.data)
 
-    error = User.loginUserValidator(data)
+    potentialUser = User.loginUserValidator(data)
 
-    if error:
+    if not potentialUser:
         response = app.response_class(
-            response = json.dumps(error),
+            response = json.dumps("Invalid Credentials"),
             status = 400,
             mimetype = 'application/json'
         )
         return response
     
-    response = jsonify({ 'msg': 'success' })
+    response = jsonify({
+        'id': potentialUser.id,
+        'username': potentialUser.username,
+        'profilePicture': potentialUser.profilePicture
+    })
 
-    accessToken = create_access_token(identity = data['email'])
-    set_access_cookies(response, accessToken)
+    #accessToken = create_access_token(identity = data['email'])
+    #set_access_cookies(response, accessToken)
 
     return response
 

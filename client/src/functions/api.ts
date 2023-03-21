@@ -59,7 +59,7 @@ export const searchForUser = (data: string): Promise<any> => {
 }
 
 
-export const getAllUserPosts = (data: number): Promise<any> => {
+export const getAllUserPosts = (data: string): Promise<any> => {
     return new Promise( (resolve, reject) => {
         axios.post(`${URL}/post/getAllUserPosts`, { user_id: data })
             .then( (response) => {
