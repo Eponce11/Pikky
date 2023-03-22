@@ -1,10 +1,22 @@
 
 import { useNavigate } from "react-router-dom";
 import { useState } from "react"
+import { useAppSelector } from "../app/hooks"
+import DefaultProfilePicture from "../static/icon-profile-pic.svg"
 
-const ProfileHeader = () => {
+interface BasicUserInfo {
+    username: string,
+    profilePicture: string | null,
+    id: string
+}
 
-    const [isProfile] = useState(true);
+const ProfileHeader = (props: BasicUserInfo) => {
+    const signedInUserId = useAppSelector( (state) => state.signedInUser.id)
+    const { username, profilePicture } = props
+    const [isSignedInUser] = useState<boolean>(props.id === signedInUserId); // need to render slower
+    console.log(props.id)
+    console.log(signedInUserId)
+    console.log(isSignedInUser)
     const [isFollowing] = useState(false);
 
     const navigate = useNavigate();
@@ -16,7 +28,11 @@ const ProfileHeader = () => {
             <div className="grid gap-x-4 gap-y-1 grid-cols-4 px-2 mt-2">
                 <div className="flex justify-center h-9 relative">
                     <div className="bg-primary-white h-20 w-20 rounded-full absolute top-[-20px] flex justify-center items-center">
-                        <div className="bg-[red] h-[75px] w-[75px] rounded-full" />
+                        {
+                            profilePicture ?
+                                <img src={ profilePicture } alt="" className="w-[75px] h-[75px] rounded-full" /> :
+                                <img src={ DefaultProfilePicture } alt="" className="w-[75px] h-[75px]  rounded-full"/>
+                        }
                     </div>
                 </div>
                 <div className="h-12 col-span-3 pl-4">
@@ -36,11 +52,11 @@ const ProfileHeader = () => {
                     </ul>
                 </div>
                 <div className="flex justify-center items-center h-9">
-                    <p>Username</p>
+                    <p>{ username }</p>
                 </div>
                 <div className="flex items-center h-9 col-span-3 pl-4">
                     {
-                        isProfile ?
+                        isSignedInUser ?
                             <button className="primary-btn h-8 px-6 py-1" onClick={ () => { navigate('/edit') }}>Edit Profile</button> :
                             isFollowing ?
                                 <button className="secondary-btn h-8 w-full ">Unfollow</button> :
