@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom"
 import CommentIcon from "../static/icon-comment.svg"
 import HeartIcon from "../static/icon-heart.svg"
 import { getOnePost } from "../functions/api";
-import { Post as PostInfo } from "../components/profile_body";
+import { Post as PostInfo } from "../pages/profile";
 import { useEffect, useState } from "react";
 
 type PostInfoOrNull = PostInfo | null;

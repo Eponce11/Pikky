@@ -17,7 +17,7 @@ const ProfileHeader = (props: BasicUserInfo) => {
     console.log(props.id)
     console.log(signedInUserId)
     console.log(isSignedInUser)
-    const [isFollowing] = useState(false);
+    const [isFollowing] = useState(false); // add is following feature
 
     const navigate = useNavigate();
 

@@ -54,8 +54,16 @@ const RegisterProfileImgForm = (props: RegisterProps) => {
 
     return (
         <div className="flex justify-center pt-5 pb-10 w-full max-w-[400px] border border-solid border-border-grey drop-shadow-xl">
-            <div className="flex flex-col items-center relative w-full px-4">
-                <h1 className="text-[48px] text-center mb-10">Pikky</h1>
+            <div className="flex flex-col items-center w-full px-4 relative">
+                <h1 className="text-[48px] text-center mb-4">Pikky</h1>
+                {
+                    profilePicture ?
+                        <div className="relative">
+                            <img src={ profilePicture } alt="" className="w-28 h-28 rounded-full" />
+                            <p className="absolute top-0 right-0 bg-gray-500 rounded-full w-5 aspect-square text-center" onClick={ removeFile }>+</p>
+                        </div> :
+                        <img src={ DefaultProfilePicture } alt="" className="w-28 h-28 rounded-full"/>
+                }
                 <input 
                     type="file"
                     name="img"
@@ -63,14 +71,8 @@ const RegisterProfileImgForm = (props: RegisterProps) => {
                     accept=".jpeg, .png, .jpg"
                     onChange={handleFileUpload}
                 />
-                {
-                    profilePicture ?
-                        <img src={profilePicture} alt="" className="w-10 h-10 rounded-full" /> :
-                        <img src={ DefaultProfilePicture } alt="" className="w-10 h-10 rounded-full"/>
-                }
-                <button onClick={ () => { props.setIsFormDataValid(false) } }>Back</button>
-                <button onClick={ removeFile }>Remove Picture</button>
-                <button onClick={handleRegister}>Upload</button>
+                <button className="absolute left-4" onClick={ () => { props.setIsFormDataValid(false) } }>Back</button>
+                <button className="primary-btn h-10" onClick={handleRegister}>Register</button>
             </div>
         </div>
 
