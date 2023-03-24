@@ -60,7 +60,7 @@ const RegisterProfileImgForm = (props: RegisterProps) => {
                     profilePicture ?
                         <div className="relative">
                             <img src={ profilePicture } alt="" className="w-28 h-28 rounded-full" />
-                            <p className="absolute top-0 right-0 bg-gray-500 rounded-full w-5 aspect-square text-center" onClick={ removeFile }>+</p>
+                            <p className="absolute top-1 right-1 bg-gray-400 rounded-full w-5 aspect-square text-center" onClick={ removeFile }>x</p>
                         </div> :
                         <img src={ DefaultProfilePicture } alt="" className="w-28 h-28 rounded-full"/>
                 }
@@ -69,6 +69,7 @@ const RegisterProfileImgForm = (props: RegisterProps) => {
                     name="img"
                     id="file-upload"
                     accept=".jpeg, .png, .jpg"
+                    className="w-full mb-3 mt-5"
                     onChange={handleFileUpload}
                 />
                 <button className="absolute left-4" onClick={ () => { props.setIsFormDataValid(false) } }>Back</button>

@@ -106,7 +106,7 @@ const RegisterForm = (props: RegisterProps) => {
                     <div className="w-full text-end mt-2">
                         <a className="decoration-none" href="/">SignIn</a>
                     </div>
-                    <input type='submit' value="Register" className="primary-btn px-6 py-3 mt-4" onClick={handleDataValidation} />
+                    <input type='submit' value="Continue" className="primary-btn px-6 py-3 mt-4" onClick={handleDataValidation} />
                 </div>
             </div>
     )

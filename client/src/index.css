@@ -1,7 +1,7 @@
 @import './styles/inputField.css';
 @import './styles/primaryButton.css';
 @import './styles/secondaryButton.css';
-@import './styles/searchField.css'
+@import './styles/searchField.css';
 
 
 @tailwind base;
