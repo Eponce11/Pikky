@@ -17,7 +17,7 @@ export interface RegisterData {
 
 const Register = () => {
 
-    const [isFormDataValid, setIsFormDataValid] = useState<boolean>(true);
+    const [isFormDataValid, setIsFormDataValid] = useState<boolean>(false);
 
     const [formData, setFormData] = useState<RegisterData>({
         username: '',

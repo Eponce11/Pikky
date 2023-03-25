@@ -88,7 +88,10 @@ def getOneUserByUsername():
         return response
 
     response = app.response_class(
-        response = json.dumps({ 'username': user.username }),
+        response = json.dumps({ 
+            'username': user.username ,
+            'profilePicture': user.profilePicture
+        }),
         status = 200,
         mimetype = 'application/json'
     )

@@ -1,11 +1,16 @@
 
 import Navbar from "../components/navbar"
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import SearchIconBlack from "../static/icon-search-black.svg"
 import { searchForUser } from "../functions/api"
+import DefaultProfilePicture from "../static/icon-profile-pic.svg"
+import { useAppDispatch, useAppSelector } from "../app/hooks"
+import { addUser, removeUser } from "../features/visitedSearchedUsersSlice"
 
 interface SearchedUser {
     username: string;
+    profilePicture: string | null;
 }
 
 type SearchedUserOrNull = SearchedUser | null;
@@ -15,17 +20,31 @@ const Search = () => {
     const [username, setUsername] = useState<string>('');
     const [searchedUser, setSearchedUser] = useState<SearchedUserOrNull>(null);
     const [error, setError] = useState<string>('Search A User');
+    const visitedUsers = useAppSelector( (state) => state.visitedSearchedUsers.users)
+    const dispatch = useAppDispatch()
+    const navigate = useNavigate()
 
-    const temp = [0, 0, 0, 0];
 
     const handleSearch = async (e:React.MouseEvent<HTMLElement>): Promise<void> => {
         e.preventDefault();
         try {
-            const potentialUser: SearchedUser = await searchForUser(username)
-            // setSearchedUser(potentialUser);
+            const potentialUser = await searchForUser(username)
+            setSearchedUser(potentialUser);
         } catch (err:any) {
-            // setError(err)
+            setError(err)
         }
+    }
+
+    const handleAddUserToVisitedArray = (e:React.MouseEvent<HTMLElement>): void => {
+        e.preventDefault()
+        const potentialVisitedUser = visitedUsers.find( (user) => user.username === searchedUser?.username)
+        if (!potentialVisitedUser) {
+            dispatch(addUser({
+                username: searchedUser?.username,
+                profilePicture: searchedUser?.profilePicture
+            }))
+        }
+        navigate(`/user/${searchedUser?.username}`)
     }
 
     return (
@@ -41,8 +60,12 @@ const Search = () => {
                     searchedUser ? 
                         <li className="flex items-center justify-between">
                             <div className="flex items-center">
-                                <div className="bg-[red] rounded-full h-10 aspect-square"/>
-                                <h4 className="ml-3">Username</h4>
+                                {
+                                    searchedUser.profilePicture ?
+                                        <img src={ searchedUser.profilePicture } alt="" className="w-10 h-10 rounded-full" /> :
+                                        <img src={ DefaultProfilePicture } alt="" className="w-10 h-10 rounded-full"/>
+                                }
+                                <h4 className="ml-3" onClick={ handleAddUserToVisitedArray }>{ searchedUser.username }</h4>
                             </div>
                             <span
                                 onClick={ () => {
@@ -60,14 +83,18 @@ const Search = () => {
             </div>
             <ul className="px-2 grow">
                 {
-                    temp.map( (user, idx) => {
+                    visitedUsers.map( (user, idx) => {
                         return (
                             <li key={idx} className="flex items-center justify-between py-2">
                                 <div className="flex items-center">
-                                    <div className="bg-[red] rounded-full h-10 aspect-square"/>
-                                    <h4 className="ml-3">Username</h4>
+                                    {
+                                        user.profilePicture ?
+                                            <img src={ user.profilePicture } alt="" className="w-10 h-10 rounded-full"/> :
+                                            <img src={ DefaultProfilePicture } alt="" className="w-10 h-10 rounded-full"/>
+                                    }
+                                    <h4 className="ml-3" onClick={ () => { navigate(`/user/${user.username}`) } }>{ user.username }</h4>
                                 </div>
-                                <p>x</p>
+                                <p onClick={ () => { dispatch(removeUser(idx)) } } >x</p>
                             </li>
                         )
                     })
