@@ -58,6 +58,15 @@ const EditProfile = () => {
         <div className="flex justify-center pt-5 pb-10 w-full max-w-[400px] border border-solid border-border-grey drop-shadow-xl">
             <div className="flex flex-col items-center w-full px-4 relative">
                 <h1 className="text-[48px] text-center mb-4">Pikky</h1>
+                <input 
+                    type="file"
+                    name="img"
+                    id="file-upload"
+                    accept=".jpeg, .png, .jpg"
+                    className="w-full mb-3 mt-5"
+                    onChange={handleFileUpload}
+                />
+                <button>Update</button>
             </div>
         </div>
 
