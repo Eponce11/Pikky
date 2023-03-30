@@ -22,10 +22,18 @@ def getAllUserPosts():
 def createPost():
     data = json.loads(request.data)
 
-    # temporary 
-    data['user_id'] = 1
+    errors = Post.createPostValidator(data)
 
+    if not len(errors) == 0:
+        response = app.response_class(
+            response = json.dumps(errors),
+            status = 400,
+            mimetype = 'application/json'
+        )
+        return response
+    
     postId = Post.createPost(data)
+
     response = app.response_class(
         response = json.dumps(postId),
         status = 200,

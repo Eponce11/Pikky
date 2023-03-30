@@ -50,3 +50,15 @@ class Post:
             'updated_at': data['updated_at'],
             'user_id': data['user_id']
         }
+    
+    @staticmethod
+    def createPostValidator(formData):
+        errors = {}
+
+        if len(formData['image']) < 20:
+            errors['image'] = 'Image is required'
+        
+        if formData['user_id'] < 1:
+            errors['user_id'] = 'Invalid User'
+        
+        return errors
