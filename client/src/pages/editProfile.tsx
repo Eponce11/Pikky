@@ -6,7 +6,7 @@ import { register } from "../functions/api";
 import { convertFileToBase64 } from "../functions/file-conversion";
 import DefaultProfilePicture from "../static/icon-profile-pic.svg"
 
-
+// need to fix
 
 import { RegisterData } from "../pages/register";
 
@@ -16,7 +16,9 @@ interface RegisterProps {
     setIsFormDataValid: React.Dispatch<SetStateAction<boolean>>;
 }
 
+
 const EditProfile = () => {
+
 
 
     const navigate = useNavigate();
@@ -66,7 +68,7 @@ const EditProfile = () => {
                     className="w-full mb-3 mt-5"
                     onChange={handleFileUpload}
                 />
-                <button>Update</button>
+                <button className="primary-btn h-10">Update</button>
             </div>
         </div>
 

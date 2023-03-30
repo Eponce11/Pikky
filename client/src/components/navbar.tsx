@@ -20,6 +20,7 @@ const Navbar = () => {
                         <img src={signedInUserProfilePicture} alt="" className="h-[30px] aspect-square rounded-full" onClick={ () => { navigate(`/user/${signedInUserUsername}`) }}/> :
                         <img src={DefaultProfilePicture} alt="" className="h-[35px] aspect-square rounded-full" onClick={ () => { navigate(`/user/${signedInUserUsername}`) }}/>
                 }
+                <p onClick={ () => navigate('/newPost')}>+</p>
             </div>
         </div>
     )
