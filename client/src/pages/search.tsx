@@ -52,7 +52,7 @@ const Search = () => {
             <div className="flex items-center p-2 bg-gradient-to-r from-primary-purple to-secondary-purple">
                     <div className="searchField">
                         <img src={ SearchIconBlack } alt="Search" onClick={ handleSearch } />
-                        <input type="text" name='password' placeholder="Search" value={username} onChange={ (e) =>  setUsername(e.target.value)} required/>
+                        <input type="text" name='search' placeholder="Search" value={username} onChange={ (e) =>  setUsername(e.target.value)} required/>
                     </div>
             </div>
             <div className="p-2 border-solid border-x-0 border-t-0 border-b-[1px] border-border-grey">

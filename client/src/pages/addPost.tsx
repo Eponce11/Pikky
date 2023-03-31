@@ -57,23 +57,37 @@ const AddPost = () => {
                 <h1 className="text-primary-white px-2 py-1 text-[28px]">Pikky</h1>
             </div>
             
-            <img src={postImage} alt="" className="w-[50%] aspect-square"/>
+            {
+                postImage.length === 0 ?
+                    <div className="w-[100%] aspect-square bg-black flex items-center justify-center text-white">Insert Image</div> :
+                    <img src={postImage} alt="" className="w-[100%] aspect-square"/>
+            }
+            
+            
 
-            <div className="flex-1">
+
+            <div className="flex-1 bg-green-400 w-[100%]">
+                <textarea 
+                    value={caption}
+                    onChange={ (e:React.ChangeEvent<HTMLTextAreaElement>) => { setCaption(e.target.value) }} 
+                    className="h-[100%] bg-transparent w-[100%] resize-none" 
+                    required
+                />
+            </div>
+
+            <div className="flex px-2 justify-between items-center">
+                <button className="primary-btn h-9 w-[45%]" onClick={handleCreatePost}>Upload</button>
                 <input 
                     type="file"
                     name="myFile"
                     id="file-upload"
                     accept=".jpeg, .png, .jpg"
+                    className="my-2 w-[45%]"
                     onChange={handleFileUpload}
                 />
-                <div className="inputField relative">
-                    <input type="text" value={caption} onChange={ (e:React.ChangeEvent<HTMLInputElement>) => { setCaption(e.target.value) }} required/>
-                </div>
-                
-                <img src={postImage} alt="" />
-                <button onClick={handleCreatePost}>Upload</button>
             </div>
+                
+            
 
             <Navbar />
         </div>
