@@ -2,31 +2,14 @@
 import { useNavigate } from "react-router-dom"
 import CommentIcon from "../static/icon-comment.svg"
 import HeartIcon from "../static/icon-heart.svg"
-import { getOnePost } from "../functions/api";
-import { Post as PostInfo } from "../pages/profile";
-import { useEffect, useState } from "react";
 
-type PostInfoOrNull = PostInfo | null;
 
-const Post = () => {
+const Post = (props: any) => {
 
-    const [post, setPost] = useState<PostInfoOrNull>(null);
 
-    useEffect( () => {
-        const fetchData = async () => {
-            try {
-                const onePost = await getOnePost(2);
-                console.log(onePost)
-                setPost(onePost)
-            } catch (err: any) {
-                console.log(err)
-            }
-        }
-        fetchData();
-    }, [])
+    const { post } = props
 
     const navigate = useNavigate();
-
 
     return (
         <div className="border-solid border-x-0 border-t-0 border-b-[1px] border-border-grey">

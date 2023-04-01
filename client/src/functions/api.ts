@@ -85,7 +85,7 @@ export const createPost = (data: PostData): Promise<any> => {
 }
 
 
-export const getOnePost = (data: number): Promise<any> => {
+export const getOnePost = (data: string | undefined): Promise<any> => {
     return new Promise( (resolve, reject) => {
         axios.post(`${URL}/post/getOne`, { id: data })
             .then( (response) => {

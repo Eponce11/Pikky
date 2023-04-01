@@ -17,7 +17,7 @@ const ProfileBody = (props: AllPosts) => {
                 {
                     posts.map( (post, idx) => {
                         return (
-                            <img src={post.image} alt="" key={idx} className="aspect-square" onClick={ () => { navigate('/post') } }/>
+                            <img src={post.image} alt="" key={idx} className="aspect-square" onClick={ () => { navigate(`/post/${post.id}`) } }/>
                         )
                     })
                 }

@@ -30,7 +30,7 @@ function App() {
 
           <Route element={<PrivateRoutes/>}>
             <Route path='/home' element={<Home/>}/>
-            <Route path='/post' element={<ViewPost/>}/>
+            <Route path='/post/:postId' element={<ViewPost/>}/>
             <Route path='/user/:username' element={<Profile/>}/>
             <Route path='/search' element={<Search/>}/>
             <Route path='/user/following' element={<Following/>}/>
