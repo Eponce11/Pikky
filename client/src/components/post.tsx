@@ -2,6 +2,7 @@
 import { useNavigate } from "react-router-dom"
 import CommentIcon from "../static/icon-comment.svg"
 import HeartIcon from "../static/icon-heart.svg"
+import DefaultProfilePicture from "../static/icon-profile-pic.svg"
 
 
 const Post = (props: any) => {
@@ -14,8 +15,8 @@ const Post = (props: any) => {
     return (
         <div className="border-solid border-x-0 border-t-0 border-b-[1px] border-border-grey">
             <div className="flex items-center bg-primary-white h-[50px] px-2">
-                <div className=" bg-[red] w-9 aspect-square rounded-full"/>
-                <p className="pl-2" onClick={ () => { navigate("/user") }}>Username</p>
+                <img src={ post.profilePicture ?  post.profilePicture : DefaultProfilePicture} alt="" className="w-9 aspect-square rounded-full" />
+                <p className="pl-2" onClick={ () => { navigate("/user") }}>{ post.username }</p>
             </div>
             <img className="w-screen aspect-square" src={post?.image} alt="" />
             
@@ -28,7 +29,7 @@ const Post = (props: any) => {
             </div>
             <div className="bg-primary-white px-2 h-44">
                 <h4>Comments</h4>
-                
+                <p>{ post.caption }</p>
                 <ul>
                     <li>
                         Username1: Nice post
