@@ -2,6 +2,8 @@
 from flask import json, request
 from flask_app import app
 from flask_app.models.model_post import Post
+from flask_app.models.model_user import User
+
 
 
 @app.route('/api/post/getAllUserPosts', methods=['POST'])
@@ -47,14 +49,19 @@ def createPost():
 def getOne():
     data = json.loads(request.data)
     post = Post.getOnePost(data)
+    user = User.getById({ 'id': post['user_id'] })
 
     response = app.response_class(
-        response = json.dumps(post),
+        response = json.dumps({
+            **post,
+            'username': user.username,
+            'profilePicture': user.profilePicture
+        }),
         status = 200,
         mimetype = 'application/json'
     )
 
-    return post
+    return response
 
 
 

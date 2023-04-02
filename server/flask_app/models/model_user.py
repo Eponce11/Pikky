@@ -31,6 +31,14 @@ class User:
         if result:
             return cls(result[0])
         return False
+
+    @classmethod
+    def getById(cls, data):
+        query = "SELECT * FROM users WHERE id = %(id)s;"
+        result = connectToMySQL(DATABASE).query_db(query, data)
+        if result:
+            return cls(result[0])
+        return False
     
     @classmethod
     def getByUsername(cls, data):
