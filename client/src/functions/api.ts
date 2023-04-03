@@ -97,3 +97,14 @@ export const getOnePost = (data: string | undefined): Promise<any> => {
     })
 }
 
+export const likePost = (data: any): Promise<any> => {
+    return new Promise( (resolve, reject) => {
+        axios.post(`${URL}/like/newLike`, data)
+            .then( (response) => {
+                resolve(response.data)
+            })
+            .catch( (error) => {
+                reject(error.response.data)
+            })
+    })
+}

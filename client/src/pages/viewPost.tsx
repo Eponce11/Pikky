@@ -36,7 +36,7 @@ const ViewPost = () => {
                 <img src={ BackIcon } alt="Back" className="left-0 ml-2 absolute" onClick={ () => { navigate(-1) } }/>
                 <h3 className="text-primary-white ml-3 text-center">Post</h3>
             </div>
-            <Post post={post}/>
+            { post ? <Post post={post}/> : null }
         </div>
     )
 }
