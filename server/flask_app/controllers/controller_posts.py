@@ -3,6 +3,7 @@ from flask import json, request
 from flask_app import app
 from flask_app.models.model_post import Post
 from flask_app.models.model_user import User
+from flask_app.models.model_like import Like
 
 
 
@@ -48,14 +49,17 @@ def createPost():
 @app.route('/api/post/getOne', methods=['POST'])
 def getOne():
     data = json.loads(request.data)
+
     post = Post.getOnePost(data)
     user = User.getById({ 'id': post['user_id'] })
+    likes = Like.getAllPostLikes({ 'post_id': post['id'] })
 
     response = app.response_class(
         response = json.dumps({
             **post,
             'username': user.username,
-            'profilePicture': user.profilePicture
+            'profilePicture': user.profilePicture,
+            'numberOfLikes': len(likes)
         }),
         status = 200,
         mimetype = 'application/json'
