@@ -17,6 +17,14 @@ class Like:
         return like_id
     
     @classmethod
+    def getOneLike(cls, data):
+        query = "SELECT * FROM likes WHERE post_id = %(post_id)s AND user_id = %(user_id)s;"
+        result = connectToMySQL(DATABASE).query_db(query, data)
+        if result:
+            return cls(result[0])
+        return False
+    
+    @classmethod
     def getAllPostLikes(cls, data):
         query = "SELECT * FROM likes WHERE post_id = %(post_id)s;"
         result = connectToMySQL(DATABASE).query_db(query, data)
@@ -26,4 +34,10 @@ class Like:
                 likesList.append(cls(like))
             return likesList
         return []
+    
+    @classmethod
+    def removeLike(cls, data):
+        query = "DELETE FROM likes WHERE post_id = %(post_id)s AND user_id = %(user_id)s;"
+        result = connectToMySQL(DATABASE).query_db(query, data)
+        return
         
