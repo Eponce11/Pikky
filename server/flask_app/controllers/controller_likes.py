@@ -9,8 +9,12 @@ def newLike():
     if not data['user_id']:
         return { 'error': 'Invalid User' }
     
-    
+    potentialLike = Like.getOneLike(data)
 
-    # like_id = Like.newLike(data)
+    if potentialLike:
+        Like.removeLike(data)
+        return { 'msg': 'Removed Like' }
 
-    return { 'msg': 'Success'}
+    like_id = Like.newLike(data)
+
+    return { 'msg': 'Liked'}
