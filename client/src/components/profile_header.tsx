@@ -8,15 +8,13 @@ interface BasicUserInfo {
     username: string,
     profilePicture: string | null,
     id: string
+    numOfPosts: number
 }
 
 const ProfileHeader = (props: BasicUserInfo) => {
     const signedInUserId = useAppSelector( (state) => state.signedInUser.id)
-    const { username, profilePicture } = props
-    const [isSignedInUser] = useState<boolean>(props.id === signedInUserId); // need to render slower
-    console.log(props.id)
-    console.log(signedInUserId)
-    console.log(isSignedInUser)
+    const { username, profilePicture, numOfPosts } = props
+
     const [isFollowing] = useState(false); // add is following feature
 
     const navigate = useNavigate();
@@ -46,7 +44,7 @@ const ProfileHeader = (props: BasicUserInfo) => {
                             <p>Following</p>
                         </li>
                         <li className="flex flex-col items-center absolute right-0 mt-2">
-                            <p>6</p>
+                            <p>{numOfPosts}</p>
                             <p>Posts</p>
                         </li>
                     </ul>
@@ -56,7 +54,7 @@ const ProfileHeader = (props: BasicUserInfo) => {
                 </div>
                 <div className="flex items-center h-9 col-span-3 pl-4">
                     {
-                        isSignedInUser ?
+                        signedInUserId === props.id ?
                             <button className="primary-btn h-8 px-6 py-1" onClick={ () => { navigate(`/edit/${signedInUserId}`) }}>Edit Profile</button> :
                             isFollowing ?
                                 <button className="secondary-btn h-8 w-full ">Unfollow</button> :

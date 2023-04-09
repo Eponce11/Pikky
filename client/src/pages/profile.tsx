@@ -45,11 +45,11 @@ const Profile = () => {
         }
         fetchData()
     }, [])
-    
+    console.log(userInfoAndPosts)
 
     return (
         <div className="flex flex-col h-screen">
-            <ProfileHeader username={userInfoAndPosts.username} profilePicture={userInfoAndPosts.profilePicture} id={userInfoAndPosts.id}/>
+            <ProfileHeader username={userInfoAndPosts.username} profilePicture={userInfoAndPosts.profilePicture} id={userInfoAndPosts.id} numOfPosts={userInfoAndPosts.posts.length}/>
             <ProfileBody posts={userInfoAndPosts.posts}/>
             <Navbar/>
         </div>
