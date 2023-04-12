@@ -108,3 +108,15 @@ export const likePost = (data: any): Promise<any> => {
             })
     })
 }
+
+export const newUserRelationship = (data: any): Promise<any> => {
+    return new Promise( (resolve, reject) => {
+        axios.post(`${URL}/userRelationship/new`, data)
+            .then( (response) => {
+                resolve(response.data)
+            })
+            .catch( (error) => {
+                reject(error.response.data)
+            })
+    })
+}
