@@ -14,10 +14,10 @@ def createUser():
 
     data['password'] = hash_pw
     
-    # id = User.createUser(data)
+    id = User.createUser(data)
 
     response = app.response_class(
-        response = json.dumps({'Msg': 'Success'}),
+        response = json.dumps(id),
         status = 200,
         mimetype = 'application/json'
     )
