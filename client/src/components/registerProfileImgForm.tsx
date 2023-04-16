@@ -10,6 +10,9 @@ import DefaultProfilePicture from "../static/icon-profile-pic.svg"
 
 
 import { RegisterData } from "../pages/register";
+import { useAppDispatch } from "../app/hooks";
+import { setSignedInUser } from "../features/signedInUserSlice";
+
 
 interface RegisterProps {
     formData: RegisterData;
@@ -19,9 +22,10 @@ interface RegisterProps {
 
 const RegisterProfileImgForm = (props: RegisterProps) => {
 
-    const { profilePicture } = props.formData
+    const { profilePicture, username } = props.formData
 
     const navigate = useNavigate();
+    const dispatch = useAppDispatch();
 
     const handleFileUpload = async (e:any) => {
         e.preventDefault()
@@ -44,7 +48,12 @@ const RegisterProfileImgForm = (props: RegisterProps) => {
     const handleRegister = async (e:React.MouseEvent<HTMLElement>): Promise<void> => {
         e.preventDefault();
         try {
-            await register(props.formData)
+            const newUserId = await register(props.formData)
+            dispatch(setSignedInUser({
+                id: newUserId,
+                username: username,
+                profilePicture: profilePicture
+            }))
             navigate('/home')
         } catch (err:any) {
             console.log(err)
