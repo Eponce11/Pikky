@@ -120,3 +120,27 @@ export const newUserRelationship = (data: any): Promise<any> => {
             })
     })
 }
+
+export const getUserFollowers = (data: string): Promise<any> => {
+    return new Promise( (resolve, reject) => {
+        axios.post(`${URL}/userRelationship/getFollowers`, {following_id: data})
+            .then( (response) => {
+                resolve(response.data)
+            })
+            .catch( (error) => {
+                reject(error.response.data)
+            })
+    })
+}
+
+export const getUserfollowing = (data: string): Promise<any> => {
+    return new Promise( (resolve, reject) => {
+        axios.post(`${URL}/userRelationship/getFollowing`, {follower_id: data})
+            .then( (response) => {
+                resolve(response.data)
+            })
+            .catch( (error) => {
+                reject(error.response.data)
+            })
+    })
+}
