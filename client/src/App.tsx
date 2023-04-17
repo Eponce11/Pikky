@@ -34,7 +34,7 @@ function App() {
             <Route path='/user/:username' element={<Profile/>}/>
             <Route path='/search' element={<Search/>}/>
             <Route path='/user/following' element={<Following/>}/>
-            <Route path='/user/followers' element={<Followers/>}/>
+            <Route path='/user/followers/' element={<Followers/>}/>
             <Route path='/edit/:id' element={<EditProfile/>}/>
             <Route path='/newPost' element={<AddPost/>}/>
           </Route>
