@@ -7,11 +7,13 @@ import thunk from 'redux-thunk'
 
 import signedInUserSlice from "../features/signedInUserSlice"
 import visitedSearchedUsersSlice from "../features/visitedSearchedUsersSlice"
+import myFollowersSlice from "../features/myFollowersSlice"
 
 
 const reducers = combineReducers({
     signedInUser: signedInUserSlice,
-    visitedSearchedUsers: visitedSearchedUsersSlice
+    visitedSearchedUsers: visitedSearchedUsersSlice,
+    myFollowers: myFollowersSlice
 })
 
 const persistConfig = {
