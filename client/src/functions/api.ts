@@ -144,3 +144,16 @@ export const getUserfollowing = (data: string): Promise<any> => {
             })
     })
 }
+
+export const getFollowers = (data: string): Promise<any> => {
+    return new Promise( (resolve, reject) => {
+        axios.post(`${URL}/routes/getFollowers`, { following_id: data })
+            .then( (response) => {
+                resolve(response.data)
+            })
+            .catch( (error) => {
+                reject(error.response.data)
+            })
+    })
+}
+

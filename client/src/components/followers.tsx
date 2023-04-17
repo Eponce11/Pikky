@@ -1,6 +1,8 @@
 
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom"
 import BackIcon from "../static/icon-back.svg"
+import { getFollowers } from "../functions/api";
 
 
 
@@ -8,7 +10,21 @@ const Followers = () => {
 
     const navigate:any = useNavigate();
 
-    const users = [{following: false},{following: false},{following: false},{following: true},{following: false}];
+    const [followers, setFollowers] = useState<Array<any>>([])
+
+    useEffect( () => {
+        getAllFollowers();
+    }, [])
+
+    const getAllFollowers = async () : Promise<void> => {
+        try {
+            const followers = await getFollowers('1')
+            console.log(followers)
+            setFollowers(followers)
+        } catch (err: any) {
+            console.log(err)
+        }
+    }
 
     return (
         <div>
@@ -18,13 +34,13 @@ const Followers = () => {
             </div>
             <ul className="px-2">
                 {
-                    users.map( (user, idx) => {
+                    followers.map( (follower) => {
                         return (
-                            <li className="flex items-center py-1 relative">
+                            <li key={follower.id} className="flex items-center py-1 relative">
                                 <div className="bg-[red] rounded-full h-10 aspect-square"/>
-                                <h4 className="ml-3">Username</h4>
+                                <h4 className="ml-3">{follower.username}</h4>
                                 {
-                                    user.following ?
+                                    follower.following ?
                                         <button className="right-2 absolute secondary-btn w-1/3 h-3/5">Unfollow</button> :
                                         <button className="right-2 absolute primary-btn w-1/3 h-3/5">Follow</button>
                                 }
