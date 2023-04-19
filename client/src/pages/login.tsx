@@ -35,6 +35,8 @@ const Login = () => {
         e.preventDefault();
         try {
             const response = await login(formData)
+                
+
             console.log(response)
             dispatch(setSignedInUser(response))
             navigate('/home')
