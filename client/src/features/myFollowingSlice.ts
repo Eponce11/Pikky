@@ -15,9 +15,9 @@ export const myFollowingSlice = createSlice({
     name: 'myFollowing',
     initialState,
     reducers: {
-        setMyFollowing: (state, action:PayloadAction<Array<string>>) => {
-            action.payload.map( (userId) => {
-                state.followingId.add(userId)
+        setMyFollowing: (state, action:PayloadAction<Array<any>>) => {
+            action.payload.map( (relationship) => {
+                state.followingId.add(relationship.following_id)
             })
         }   
     }

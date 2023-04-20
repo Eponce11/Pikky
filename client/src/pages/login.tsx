@@ -2,7 +2,8 @@ import { useNavigate } from "react-router-dom"
 import React, { useState } from "react";
 import { useAppDispatch } from "../app/hooks";
 import { setSignedInUser } from "../features/signedInUserSlice";
-import { login } from "../functions/api";
+import { login, getFollowers } from "../functions/api";
+import { setMyFollowing } from "../features/myFollowingSlice";
 
 
 export interface LoginData {
@@ -35,9 +36,10 @@ const Login = () => {
         e.preventDefault();
         try {
             const response = await login(formData)
-                
 
-            console.log(response)
+            const myFollowers = await getFollowers(response.id)
+
+            dispatch(setMyFollowing(myFollowers))
             dispatch(setSignedInUser(response))
             navigate('/home')
         }catch (err: any) {
