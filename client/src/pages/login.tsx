@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom"
 import React, { useState } from "react";
 import { useAppDispatch } from "../app/hooks";
 import { setSignedInUser } from "../features/signedInUserSlice";
-import { login, getFollowers } from "../functions/api";
+import { login, getUserfollowing } from "../functions/api";
 import { setMyFollowing } from "../features/myFollowingSlice";
 
 
@@ -37,9 +37,9 @@ const Login = () => {
         try {
             const response = await login(formData)
 
-            const myFollowers = await getFollowers(response.id)
+            const myFollowing = await getUserfollowing(response.id)
 
-            dispatch(setMyFollowing(myFollowers))
+            // dispatch(setMyFollowing(myFollowers))
             dispatch(setSignedInUser(response))
             navigate('/home')
         }catch (err: any) {
