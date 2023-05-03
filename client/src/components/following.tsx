@@ -12,7 +12,7 @@ const Following = () => {
     return (
         <div>
             <div className="flex items-center justify-center p-2 bg-gradient-to-r from-primary-purple to-secondary-purple relative mb-2">
-                <img src={ BackIcon } alt="Back" className="left-0 ml-2 absolute" onClick={ () => { navigate('/user') } }/>
+                <img src={ BackIcon } alt="Back" className="left-0 ml-2 absolute" onClick={ () => { navigate(-1) } }/>
                 <h3 className="text-primary-white ml-3">Username Following</h3>
             </div>
             <ul className="px-2">

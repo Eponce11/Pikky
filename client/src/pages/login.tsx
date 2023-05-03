@@ -39,7 +39,7 @@ const Login = () => {
 
             const myFollowing = await getUserfollowing(response.id)
 
-            // dispatch(setMyFollowing(myFollowers))
+            // dispatch(setMyFollowing(myFollowing))
             dispatch(setSignedInUser(response))
             navigate('/home')
         }catch (err: any) {
