@@ -157,3 +157,16 @@ export const getFollowers = (data: string): Promise<any> => {
     })
 }
 
+
+export const newComment = (data:string): Promise<any> => {
+    return new Promise( (resolve, reject) => {
+        axios.post(`${URL}/comment/new`, { comment: data })
+            .then( (response) => {
+                resolve(response.data)
+            })
+            .catch( (error) => {
+                reject(error.response.data)
+            })
+    })
+}
+
